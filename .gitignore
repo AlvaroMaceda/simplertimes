@@ -1,2 +1,4 @@
 .idea/
 .vscode/
+# For now, we won't store built site. I think I will automate deploying soon.
+simplertimes/build/
