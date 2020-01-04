@@ -5,7 +5,9 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-livereload = "==2.5.1"
 
 [requires]
 python_version = "3.7"
+
+[dev-packages]
+livereload = "==2.5.1"
