@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Akkurat";
+    src: url("Akkurat.ttf");
+    }
+
+* {
+    font-family: 'Akkurat', Arial, sans-serif;
+}

@@ -1,17 +1,115 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>This is the main page</h1>
-    <pre><code>
-import datetime
 
-def banana():
-    return 'banana'
 
-class Post():
+    <article>
+        <h1>Flask and Freeze</h1>
+        <p class="post_datetime">11/01/2020 19:00</p>
+        <p>Well, now that I have two posts is time to refactor. A static site is simple, but it will give me a lot of work as the 
+            number of posts grows. I think I will want to have only some post listed on the home page, have some kind of categories
+             or organization by date… the idea is to have at least 52 posts at the end of the year so those utilities will be useful.</p>
 
-    def __init__(self, title = '', contents = '', date = datetime.datetime.now()):
-        self.title = title
-        self.contents = contents
-        self.date = date
-    </code></pre>
+        <p>In simpler times, just after the use of static sites as blogs, people used simple applications to manage their blogs.
+             Nowadays those applications had evolved into monsters like Wordpress. I wanted something more simple and built by me: 
+             after all, the idea is that this blog to be a place for my own learning, and installing something built by another people 
+             won’t bring me very much.</p>
+        
+        <p>I chose Flask as the framework to build such an application: I’m learning Python so that will be the language for the app. 
+            There are more complicated frameworks like Django, but Flask is less opinionated and it will allow me to be more flexible 
+            with my code. I’ll code more, it’s sure, but maybe I can apply Domain Driven Design concepts, testing, etc.</p>
+        
+        <p>After choosing Flask I had a (great and original) idea: what if, after writing a post, my app generated the entire site in Html
+             and that was what would be uploaded to the server? I only wanted a static site, perhaps with the ability to write comments. 
+             This approach would be enough for my blog and It would be easier to deploy.</p>
+        
+        <p>But after googling about it I realized two things: it was a good approach but it was not at all original. There are 
+            <a href="https://www.staticgen.com/">lots of frameworks and libraries</a> to help with that. A static site has strong advantages: 
+            speed, security and ease of deployment, so it's a path which has been explored by developers in the pasts three or four years.</p>
+        
+        <p>I think I’ll use a mixed approach. There is a library, flask-freeze, which takes a Flask application and generates a static 
+            site. That will be enough until I include comments; then I plan to use a mini-server which manages comments and regenerates 
+            the post page as needed.</p>
+
+        <p>By now I have a basic Flask app running, serving the posts and generating a static site from it. The posts are fixed: there is 
+            no database at the moment.The code for creating a Flask application is very simple: </p>
+<pre><code>
+from flask import Flask, render_template
+
+def create_app(test_config=None):
+    app = Flask(__name__, instance_relative_config=True)
+
+    @app.route('/')
+    def root():
+        return render_template('/index.html')
+
+    return app
+</code></pre>
+
+        <p>Routes work with annotations. I didn't like annotations very much: they obscure the code because you must look in another place to discover what the annotation is doing. But later I learnt some functional programming and discovered that 
+            annotations are <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher-order functions</a>. and, if used with
+            care (only a couple of annotations with well-defined meaning across and app) can be useful.</p>
+                   
+        <p>On the other hand, I do not like the use of annotations to define the routes: I believe that the routes are part of the application configuration 
+            and should be together in some file so they are easy to visualize and modify. Flask allows to define the routes through <code>app.add_url_rule()</code>, but 
+            for now, I will use the decorators until the application has a more complexity.</p>
+
+        <p>The only route for the app will render a Jinja2 template. I have a template for the site scaffold and another one, inheriting from it, for the 
+            index. I've also included a custom font for the site and a code formatter. </p>
+
+        <p>Next steps: a post’s database and the thing I fear more: introducing TDD. But that will be next week.</p>
+    </article>
+
+    <article>
+        <h1>New Year's resolutions</h1>
+        <p class="post_datetime">01/01/2020 14:00</p>
+        <p>I've seen people who, as a New Year's Resolution, have decided to blog every day. That's too much for me, but I
+            want to start blogging again so I think new years is a good moment to do it.</p>
+    
+        <p> There was a time, when Internet was younger and blogging was new and anonymous, when I wrote a post almost every
+            week. They were long posts and served me to reflect and clarify my thoughts (and also to make some friends whom
+            nowadays are lost) In those days I wanted many people to read and comment on my posts. Now, I doubt anybody read
+            this, so I will use the blog for personal reflections.I believe that doing a weekly written reflection on what I
+            am learning, what I am building or the direction I want to take cand help me to clarify my ideas and give me a
+            deeper understanding of what's happening.</p>
+    
+        <p>This year I want to change jobs and consolidate my knowledge of artificial intelligence, so taking some time each
+            week to look back can be useful to me. I also want to improve my English skills, so I'll write it in that
+            language. I can read English very well, and I can understand it well, but I'm not used to speaking or writing.
+            It will be painful at first (I needed to use an automatic translator and grammar checker to write this and avoid
+            some mistakes) but I hope this will get easier over time.</p>
+    
+        <p>So, first week covered. Only 51 to go.</p>
+    </article>
+
+    <article>
+        <h1>Simpler things</h1>
+        <p class="post_datetime">23/7/2019 12:23</p>
+        <p>
+            I'm a 46 years old programmer. I came from a world where things were simpler.
+        </p>
+        <p>
+            When I started my career there were only a couple of tools and different jobs in this sector. If you learnt C,
+            COBOL, Pascal and Assembler you could work in almost every position. Java was a cutting-edge technology when it
+            was
+            launched
+        </p>
+        <p>
+            I was working in IT for more than fifteen years, but a couple of years ago I started to work as a teacher after
+            two
+            years of being a bank cashier. All that time I've been trying to keep my knowledge up-to-date in web development
+            (the branch I was specialized in) but it's almost an impossible task. Technology is developing at an exponential
+            rate and is difficult to have a base knowledge of the more relevant tools and practices.
+        </p>
+        <p>
+            As I want to work in development again, I'll start some projects, make some experiments and take some courses to
+            explore where could I go now. My goal for the next years is to work from home with flexible schedule and earn
+            200k
+            euros per year.I think is a very ambitious goal, but I'll keep it in mind and will see where I can arrive.
+        </p>
+        <p>
+            I'll start with this blog. What did we do in simpler times when somebody needed a blog?: a static page. Let's
+            build
+            one.
+        </p>
+    </article>    
 {% endblock %}

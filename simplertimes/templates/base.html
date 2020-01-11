@@ -5,65 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Simpler times{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet"
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/default.min.css">
 </head>
 <body>
 
-    
+<header><h1>Simpler times</h1></header>
+
 {% block content %}
-<article>
-    <h1>New Year's resolutions</h1>
-    <p class="post_datetime">01/01/2020 14:00</p>
-    <p>I've seen people who, as a New Year's Resolution, have decided to blog every day. That's too much for me, but I
-        want to start blogging again so I think new years is a good moment to do it.</p>
-
-    <p> There was a time, when Internet was younger and blogging was new and anonymous, when I wrote a post almost every
-        week. They were long posts and served me to reflect and clarify my thoughts (and also to make some friends whom
-        nowadays are lost) In those days I wanted many people to read and comment on my posts. Now, I doubt anybody read
-        this, so I will use the blog for personal reflections.I believe that doing a weekly written reflection on what I
-        am learning, what I am building or the direction I want to take cand help me to clarify my ideas and give me a
-        deeper understanding of what's happening.</p>
-
-    <p>This year I want to change jobs and consolidate my knowledge of artificial intelligence, so taking some time each
-        week to look back can be useful to me. I also want to improve my English skills, so I'll write it in that
-        language. I can read English very well, and I can understand it well, but I'm not used to speaking or writing.
-        It will be painful at first (I needed to use an automatic translator and grammar checker to write this and avoid
-        some mistakes) but I hope this will get easier over time.</p>
-
-    <p>So, first week covered. Only 51 to go.</p>
-</article>
-<article>
-    <h1>Simpler things</h1>
-    <p class="post_datetime">23/7/2019 12:23</p>
-    <p>
-        I'm a 46 years old programmer. I came from a world where things were simpler.
-    </p>
-    <p>
-        When I started my career there were only a couple of tools and different jobs in this sector. If you learnt C,
-        COBOL, Pascal and Assembler you could work in almost every position. Java was a cutting-edge technology when it
-        was
-        launched
-    </p>
-    <p>
-        I was working in IT for more than fifteen years, but a couple of years ago I started to work as a teacher after
-        two
-        years of being a bank cashier. All that time I've been trying to keep my knowledge up-to-date in web development
-        (the branch I was specialized in) but it's almost an impossible task. Technology is developing at an exponential
-        rate and is difficult to have a base knowledge of the more relevant tools and practices.
-    </p>
-    <p>
-        As I want to work in development again, I'll start some projects, make some experiments and take some courses to
-        explore where could I go now. My goal for the next years is to work from home with flexible schedule and earn
-        200k
-        euros per year.I think is a very ambitious goal, but I'll keep it in mind and will see where I can arrive.
-    </p>
-    <p>
-        I'll start with this blog. What did we do in simpler times when somebody needed a blog?: a static page. Let's
-        build
-        one.
-    </p>
-</article>
 {% endblock %}
 
 <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
