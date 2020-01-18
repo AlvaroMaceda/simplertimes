@@ -6,3 +6,8 @@
 * {
     font-family: 'Akkurat', Arial, sans-serif;
 }
+
+main {
+    max-width: 978px;
+    margin: 0 auto;
+}
