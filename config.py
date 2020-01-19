@@ -1,0 +1,1 @@
+FREEZER_DESTINATION = '../build'
