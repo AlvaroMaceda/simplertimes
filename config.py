@@ -1,2 +1,2 @@
 FREEZER_DESTINATION = '../build'
-DATABASE = 'testingdb.sqlite3'
+DATABASE = 'db/simplertimes.sqlite3'

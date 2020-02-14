@@ -3,7 +3,9 @@ To install dependencies: ```pipenv install```
 Open a shell with ```pipenv shell```
 
 ## Run
-```fr.sh``` will run the app in development mode
+We asume the commands are run in a pipenv shell. If not, you must prefix each command with ```pipenv run ...```
+
+```./fr.sh``` will run the app in development mode
 (```run.py``` was a try to livereload the app which didn't work)
 
 ## Build

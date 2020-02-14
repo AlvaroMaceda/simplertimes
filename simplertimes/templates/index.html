@@ -2,10 +2,10 @@
 {% block content %}
 
 <main>
-{% include "post4.html" %}
-{% include "post3.html" %}
-{% include "post2.html" %}
-{% include "post1.html" %}
+<!-- {% include "editing_post.html" %} -->
+{% for post in posts %}
+    {% include "post.html" %}
+{% endfor %}
 </main>
 
 {% endblock %}

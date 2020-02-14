@@ -1,20 +1,12 @@
-import sqlite3
-
 from flask import current_app, g
+from simplertimes.sqlite3db import SQLite3DB
 
 def get_db():
-    print('opening db')
     if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
-        )
-        g.db.row_factory = sqlite3.Row
+        g.db = SQLite3DB(current_app.config['DATABASE'])
+    return g.db   
 
-    return g.db
-
-def close_db(e=None):
+def close_db():
     db = g.pop('db', None)
-
     if db is not None:
         db.close()

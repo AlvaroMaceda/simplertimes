@@ -5,7 +5,8 @@ def banana():
 
 class Post():
 
-    def __init__(self, title = '', contents = '', date = datetime.datetime.now()):
+    def __init__(self, title = '', content = '', date = datetime.datetime.now()):
         self.title = title
-        self.contents = contents
+        self.content = content
         self.date = date
+    

@@ -12,19 +12,14 @@ def create_app(test_config=None):
         close_db()
         return response     
 
-    @app.route('/admin')
-    def admin():
+    @app.route('/admin/<_>')
+    def admin(_=None):
         return 'pass'
-
-    @app.route('/test_db')
-    def test_db():
-        db = get_db()
-        return 'foo'
 
     @app.route('/')
     def root():
-        from simplertimes.posts.post import Post
-        from simplertimes.posts.posts_repository import PostsRepository
-        return render_template('/index.html')
+        from simplertimes.posts import PostsRepository
+        pr = PostsRepository(get_db())
+        return render_template('/index.html', posts=pr.home_posts())
 
     return app
