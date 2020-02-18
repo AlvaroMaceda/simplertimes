@@ -1,7 +1,7 @@
 from flask import Flask, g
 from flask import render_template
-# import sqlite3
-from simplertimes.db import get_db, close_db
+
+from .db import get_db, close_db
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)

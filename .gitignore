@@ -4,3 +4,5 @@ __pycache__
 # For now, we won't store built site. I think I will automate deploying soon.
 simplertimes/build/
 /build/
+# DB Browser journals
+/db/*-journal

@@ -19,4 +19,5 @@ class PostFactory():
             title = field('title'),
             date = field('creation_datetime'),
             content = field('content'),
+            commit = field('commit'),
         )

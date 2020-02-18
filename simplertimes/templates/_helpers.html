@@ -1,0 +1,5 @@
+{% macro commit_url(commit) %}
+    {% if commit %}
+        <a href='{{ config.REPOSITORY }}/tree/{{ commit }}'>#{{ commit }}</a>
+    {% endif %}
+{% endmacro %}

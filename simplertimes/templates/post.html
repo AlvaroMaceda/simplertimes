@@ -1,5 +1,10 @@
+{% from '_helpers.html' import commit_url %}
+
 <article>
     <h1>{{ post.title }}</h1>
-    <p class="post_datetime">{{ post.date }}</p>
+    <p class="post_datetime">
+        {{ post.date }} 
+        {{ commit_url(post.commit) }}
+    </p>
     {{ post.content | safe }}
 </article>
