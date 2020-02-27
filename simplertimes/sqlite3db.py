@@ -3,27 +3,27 @@ import sqlite3
 class SQLite3DB():
 
     def __init__(self, db_path):
-        self._db = None
-        self.db_path = db_path
+        self.__db_conn = None
+        self.__db_path = db_path
 
-    def db(self):
-        if not self._db:
-            self._db = sqlite3.connect(
-                self.db_path,
+    def __db(self):
+        if not self.__db_conn:
+            self.__db_conn = sqlite3.connect(
+                self.__db_path,
                 detect_types=sqlite3.PARSE_DECLTYPES
             )
-            self._db.row_factory = sqlite3.Row
+            self.__db_conn.row_factory = sqlite3.Row
 
-        return self._db
+        return self.__db_conn
 
     def close(self):
-        if self._db is not None:
-            self._db.close()
+        if self.__db_conn is not None:
+            self.__db_conn.close()
 
     def query(self, query, args=(), one=False, factory=sqlite3.Row):
         
-        self.db().row_factory = factory
-        cur = self.db().execute(query, args)
+        self.__db().row_factory = factory
+        cur = self.__db().execute(query, args)
         
         if one: 
             rv = c.fetchone()
