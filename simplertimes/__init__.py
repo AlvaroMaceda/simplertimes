@@ -12,6 +12,19 @@ def create_app(test_config=None):
         close_db()
         return response     
 
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+
+    @app.route('/post/<friendly_name>')
+    def post(friendly_name):
+        from simplertimes.posts import PostsRepository
+        pr = PostsRepository(get_db())
+        post = pr.by_friendly_name(friendly_name)
+        if not post: return render_template('/404.html'),404
+        return render_template('/standalone_post.html', post=post)
+
     @app.route('/admin/<_>')
     def admin(_=None):
         return 'pass'

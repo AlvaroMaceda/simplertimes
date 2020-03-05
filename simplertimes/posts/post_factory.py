@@ -16,6 +16,8 @@ class PostFactory():
         field_names = list(map(lambda x:x[0], cursor.description))
     
         return Post(
+            id = field('id'),
+            friendly_name = field('friendly_name'),
             title = field('title'),
             date = field('creation_datetime'),
             content = field('content'),

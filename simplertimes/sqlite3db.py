@@ -20,14 +20,13 @@ class SQLite3DB():
         if self.__db_conn is not None:
             self.__db_conn.close()
 
-    def query(self, query, args=(), one=False, factory=sqlite3.Row):
-        
+    def query(self, query, args_array=[], one=False, factory=sqlite3.Row):
+    
         self.__db().row_factory = factory
-        cur = self.__db().execute(query, args)
+        cur = self.__db().execute(query, tuple(args_array))
         
         if one: 
-            rv = c.fetchone()
-            row = rv[0] if rv else None
+            row = cur.fetchone()
         else:
             rv = cur.fetchall()
         cur.close()

@@ -15,3 +15,15 @@ class PostsRepository():
             ,factory = PostFactory.from_sqlite3_row)
 
         return cursor
+
+    def by_friendly_name(self, friendly_name):
+        cursor = self.db.query(
+            '''
+            SELECT * FROM Posts
+            WHERE Posts.friendly_name = ?
+            '''
+            ,args_array=[friendly_name]
+            ,one = True
+            ,factory = PostFactory.from_sqlite3_row)
+
+        return cursor 
