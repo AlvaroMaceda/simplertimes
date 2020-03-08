@@ -11,9 +11,25 @@ We asume the commands are run in a pipenv shell. If not, you must prefix each co
 ## Build
 ```python build.py``` will generate a simplertimes/build directory with the static site
 
-## Notes and things to explore
-- Use sqlite3 with flask: 
-  https://flask.palletsprojects.com/en/1.1.x/patterns/sqlite3/
+##3 Test
+```mamba test``` will run all tests under tests directory
 
-- Define and access the database:
-  https://flask.palletsprojects.com/en/1.1.x/tutorial/database/
+## Notes and things to explore
+
+VS Code configuration for running mamba tests:
+```
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "mamba all",
+            "type": "shell",
+            "command": "pipenv run mamba test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}
+```
