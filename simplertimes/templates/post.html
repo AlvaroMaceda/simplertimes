@@ -1,10 +1,10 @@
-{% from '_helpers.html' import commit_url %}
+{% from '_helpers.html' import tag_url %}
 
 <article>
     <h1><a href="{{ url_for('.post', friendly_name = post.friendly_name) }}">{{ post.title }}</a></h1>
     <p class="post_datetime">
-        {{ post.date }} 
-        {{ commit_url(post.commit) }}
+        {{ post.date }}
+        {{ tag_url(post.friendly_name) }}
     </p>
     {{ post.content | safe }}
 </article>

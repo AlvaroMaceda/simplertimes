@@ -17,6 +17,11 @@ in `index.html` at the same directory
 - Once edited, it must be included by hand on the database (table `posts`)
 - Then you can comment againt the code on `index.html` and build the static app.
 
+## Tagging
+- To add a tag for a post: `git tag -a <slug> <commit> -m=""`
+- To show tags in chronological order: `git log --tags --simplify-by-decoration --pretty="format:%ci %d"`
+
+Remember to `git push --tags`
 ## TO-DO
 1) Pagination on main page
 
