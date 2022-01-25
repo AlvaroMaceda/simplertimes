@@ -5,23 +5,15 @@ def make_livereload_server(wsgi_app):
     server = Server(wsgi_app)
 
     watch_patterns = (
-        "simplertimes/**",
-        "simplertimes/*.html",
-        "/home/alvaro/Software/simplertimes_environment/src/simplertimes/__init__.py"
+        "simplertimes/**/*.*",
     )
 
     for pattern in watch_patterns:
-        server.watch(pattern,shell('ls -la'))
+        server.watch(pattern)
 
     return server
 
 if __name__ == '__main__':
-    # app = create_app()
-    # app.run(debug=True)
-    import os
-    cwd = os.getcwd()
-    print(cwd)
-
-    flask_wsgi_app = create_app().wsgi_app
+    flask_wsgi_app = create_app(debug=True).wsgi_app
     server = make_livereload_server(flask_wsgi_app)
     server.serve()

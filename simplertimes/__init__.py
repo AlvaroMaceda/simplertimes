@@ -3,15 +3,15 @@ from flask import render_template
 
 from .db import get_db, close_db
 
-def create_app(test_config=None):
+def create_app(debug = False):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object('config')
+    app.debug = debug
 
     @app.after_request
     def after_request(response):
         close_db()
-        return response     
-
+        return response
 
     @app.errorhandler(404)
     def page_not_found(e):
